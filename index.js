@@ -14,18 +14,18 @@ const eventEmitter = require('./utils/eventEmitter.js');
 
 const app = express();
 const httpServer = http.createServer(app);
-// const io = socketIo(httpServer, {
-//     cors: {
-//         origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
-//     }
-// });
-
 const io = socketIo(httpServer, {
     cors: {
-      origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"],
-      credentials: true
+        origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
     }
-  });
+});
+
+// const io = socketIo(httpServer, {
+//     cors: {
+//       origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"],
+//       credentials: true
+//     }
+//   });
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -33,8 +33,7 @@ admin.initializeApp({
 });
 
 app.use(cors({
-    origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"],
-    credentials: true
+    origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
 }));
 
 app.use(express.json({ limit: '100mb' }));
