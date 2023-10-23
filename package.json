@@ -2,9 +2,9 @@
   "name": "meet-server",
   "version": "1.0.0",
   "description": "meet server with nodejs and express",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "nodemon index"
   },
   "author": "",
   "license": "ISC",
