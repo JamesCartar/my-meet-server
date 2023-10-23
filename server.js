@@ -16,7 +16,7 @@ const app = express();
 const httpServer = http.createServer(app);
 const io = socketIo(httpServer, {
     cors: {
-        origin: "*"
+        origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
     }
 });
 
@@ -26,7 +26,7 @@ admin.initializeApp({
 });
 
 app.use(cors({
-    origin: '*'
+    origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
 }));
 
 app.use(express.json({ limit: '100mb' }));
