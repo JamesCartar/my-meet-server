@@ -14,14 +14,14 @@ const eventEmitter = require('./utils/eventEmitter.js');
 
 const app = express();
 
-
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://meet-1fa4e-default-rtdb.asia-southeast1.firebasedatabase.app"
 });
 
 app.use(cors({
-    origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app", "http://localhost:3000"]
+    origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"],
+    credentials: true
 }));
 
 app.use(express.json({ limit: '100mb' }));
@@ -37,19 +37,20 @@ app.use('/rooms', roomRouter);
 
 
 
-const httpServer = http.createServer(app);
-const io = socketIo(httpServer, {
-    cors: {
-        origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app", "http://localhost:3000"]
-    }
-});
 
+const httpServer = http.createServer(app);
 // const io = socketIo(httpServer, {
 //     cors: {
-//       origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app", "http://localhost:3000"],
-//       credentials: true
+//         origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
 //     }
-//   });
+// });
+
+const io = socketIo(httpServer, {
+    cors: {
+      origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"],
+      credentials: true
+    }
+  });
 
 
 // Set up a connection event handler for socket.io
@@ -107,10 +108,7 @@ io.on('connection', (socket) => {
 
 
 
-connectDB(process.env.MONGO_URI);
-httpServer.listen(3500, () => {
-    console.log('Server is listening on port http://localhost:3500');
-});
+
 
 
 const start = async () => {
@@ -124,4 +122,4 @@ const start = async () => {
     }
 }
 
-// start();
+start();
