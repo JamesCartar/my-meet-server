@@ -1,6 +1,6 @@
 const express = require('express');
 const socketIo = require('socket.io');
-const http = require('http');
+const http = require('https');
 const cors = require('cors');
 const admin = require("firebase-admin");
 
