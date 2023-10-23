@@ -21,7 +21,7 @@ admin.initializeApp({
 });
 
 app.use(cors({
-    origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app/", "http://localhost:3000"]
+    origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app", "http://localhost:3000"]
 }));
 
 app.use(express.json({ limit: '100mb' }));
@@ -40,13 +40,13 @@ app.use('/rooms', roomRouter);
 const httpServer = http.createServer(app);
 const io = socketIo(httpServer, {
     cors: {
-        origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app/", "http://localhost:3000"]
+        origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app", "http://localhost:3000"]
     }
 });
 
 // const io = socketIo(httpServer, {
 //     cors: {
-//       origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app/", "http://localhost:3000"],
+//       origin: ["https://653663cccdbf46080e7c8ac9--neon-sable-8d8b4b.netlify.app", "http://localhost:3000"],
 //       credentials: true
 //     }
 //   });
