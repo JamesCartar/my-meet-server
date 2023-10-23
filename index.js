@@ -107,7 +107,10 @@ io.on('connection', (socket) => {
 
 
 
-
+connectDB(process.env.MONGO_URI);
+httpServer.listen(3500, () => {
+    console.log('Server is listening on port http://localhost:3500');
+});
 
 
 const start = async () => {
@@ -121,4 +124,4 @@ const start = async () => {
     }
 }
 
-start();
+// start();
