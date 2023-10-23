@@ -40,7 +40,7 @@ app.use('/rooms', roomRouter);
 const httpServer = http.createServer(app);
 const io = socketIo(httpServer, {
     cors: {
-        origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
+        origin: "http://localhost:3000"
     }
 });
 
