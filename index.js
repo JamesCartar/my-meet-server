@@ -47,7 +47,7 @@ app.use('/rooms', roomRouter);
 
 // Set up a connection event handler for socket.io
 io.on('connection', (socket) => {
-
+    console.log('This user connected: ', socket.id);
     
 
     socket.on('room:create', ({ user, roomId}) => {
