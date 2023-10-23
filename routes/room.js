@@ -113,6 +113,8 @@ router.post('/join', async(req, res) => {
     //     }
     // });
     const { user, roomId } = req.body;
+
+    console.log(req.body)
     if( !user || !user.name || !user.socketId || !roomId ) {
         return res.status(400).json({ success: false, message: 'Please provide all the necessicity filelds !' });
     };
