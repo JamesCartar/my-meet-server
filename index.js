@@ -13,8 +13,9 @@ const serviceAccount = require("./config/google-services.json");
 const eventEmitter = require('./utils/eventEmitter.js');
 
 const app = express();
+const options = { server: { port: 3500, allowWebSocket: true } };
 const httpServer = http.createServer(app);
-const io = socketIo(httpServer, {
+const io = socketIo(httpServer, options, {
     cors: {
         origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
     }
