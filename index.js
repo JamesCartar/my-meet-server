@@ -13,9 +13,8 @@ const serviceAccount = require("./config/google-services.json");
 const eventEmitter = require('./utils/eventEmitter.js');
 
 const app = express();
-const options = { server: { port: 3500, allowWebSocket: true } };
 const httpServer = http.createServer(app);
-const io = socketIo(httpServer, options, {
+const io = socketIo(httpServer, {
     cors: {
         origin: ["https://my-meet-v1.vercel.app", "http://localhost:3000"]
     }
@@ -48,7 +47,7 @@ app.use('/rooms', roomRouter);
 
 // Set up a connection event handler for socket.io
 io.on('connection', (socket) => {
-    console.log('This user connected: ', socket.id);
+
     
 
     socket.on('room:create', ({ user, roomId}) => {
