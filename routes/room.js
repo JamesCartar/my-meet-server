@@ -14,7 +14,7 @@ const roomModel = require('../models/room');
 router.post('/create', async (req, res) => {
     try {
         const { user } = req.body;
-        if( !user || !user.name || !user.socketId ) {
+        if( !user || !user.name ) {
             return res.status(400).json({ success: false, message: 'Please provide all the necessicity filelds !' });
         }  
 
@@ -115,7 +115,7 @@ router.post('/join', async(req, res) => {
     const { user, roomId } = req.body;
 
     console.log(req.body)
-    if( !user || !user.name || !user.socketId || !roomId ) {
+    if( !user || !user.name || !roomId ) {
         return res.status(400).json({ success: false, message: 'Please provide all the necessicity filelds !' });
     };
 

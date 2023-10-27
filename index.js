@@ -70,14 +70,16 @@ io.on('connection', (socket) => {
         io.to(roomId).emit("room:join", user)
     });
 
-    socket.on('user:call', ({ to, offer }) => {
+    socket.on('user:call', ({ to, offer, from }) => {
         // admin send the first offer to user
-        io.to(to.socketId).emit('incomming:call', { from: socket.id, offer });
-    })
+        // io.to(to.socketId).emit('incomming:call', { from: socket.id, offer });
+        io.to(to.socketId).emit('incomming:call', { from: from, offer });
+    });
 
     socket.on('call:accepted', ({ to, ans }) => {
         // sending to admin that user has accepted and sending the user's ans
-        io.to(to).emit('call:accepted', { from: socket.id, ans });
+        // io.to(to).emit('call:accepted', { from: socket.id, ans });
+        socket.broadcast.to(to).emit('call:accepted', { from: to, ans });
     });
 
     socket.on('peer:nego:needed', ({ to, offer }) => {
